@@ -2,10 +2,6 @@ import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
 
-from asgiref.sync import async_to_sync
-from asgiref.sync import sync_to_async
-from channels.generic.websocket import WebsocketConsumer
-
 from .models import message, chats
 
 class ChatConsumer(AsyncWebsocketConsumer):

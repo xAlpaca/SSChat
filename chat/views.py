@@ -1,28 +1,15 @@
-import json
-import time
-import os
-import random
 import secrets
-
-from websocket import create_connection
 from django.shortcuts import render
 from .models import chat_messages
-import subprocess
 from django.http import HttpResponse
 from django.http import JsonResponse
 
 
-import sys
-from channels.layers import get_channel_layer
-from asgiref.sync import async_to_sync
-from channels.generic.websocket import WebsocketConsumer
-from websocket import create_connection
-import asyncio
+
 
 
 chats = chat_messages
 
-# chats.objects.all().delete()
 
 def index(request):
 	vars = {}
@@ -60,13 +47,10 @@ def get_messages(request, room_name):
 	for i in messages:
 		texts.append(i.text)
 
-
-
 	list = {}
 
 	for i in range(len(messages)):
 		list[i] = {0: messages[i].text, 1: str(messages[i].time), 2: str(messages[i].date), 3: str(messages[i].seed)}
-	# print(list)
 
 	return JsonResponse(list)
 
@@ -95,7 +79,5 @@ def delete_message(request, room_name):
 			print(i.text)
 			if i.room == room_name:
 				i.delete()
-
-
 
 	return HttpResponse()

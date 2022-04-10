@@ -23,11 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '1^(anmd0@wi4(h)_+=pgkp$*8daf_a(@fh=ed1@_f@n@rq(21_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["6j2hum3uo4bebnchlo2b3xaaqb5235pqyiqlhk3zzlgczg24piwyfxqd.onion",
-                ]
-
+ALLOWED_HOSTS = ["yourSiteDomainName.com",
+                 "32e3dsi76nJknNNSD2321z.onion"
+                 "127.0.0.1"
+                 ]
 # Application definition
 
 INSTALLED_APPS = [
