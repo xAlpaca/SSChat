@@ -9,7 +9,7 @@
 ### How to setup it.
 - Download and install python 3.x
 - ```console: python3 -m pip install django channels```
-- ##### But before you will be able to run the site, you have to add a domain name into _[SSForce/onionChat/settings.py]()_
+- ##### But before you will be able to run the site, you have to add a domain name into _[SSChat/onionChat/settings.py]()_
 ```python 
 25 # SECURITY WARNING: don't run with debug turned on in production!
 26 DEBUG = True
