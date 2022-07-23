@@ -1,0 +1,265 @@
+body{
+    background-color: #2C3333;
+    font-family: Tahoma, sans-serif;
+    color: #E7F6F2;
+    margin: 0;
+}
+
+.row{
+    margin: auto;
+}
+
+
+
+#settings{
+    background: #395B64;
+    width: 600px;
+    padding: 10px;
+    margin-top: 50px;
+    border-radius: 7px;
+    color: #E7F6F2;
+    font-size: 16px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+}
+
+.line{
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+    width: 600px;
+    overflow-wrap: break-word;
+}
+#chatbox{
+    background: #A5C9CA;
+    text-align: left;
+    width: 600px;
+    padding: 10px;
+    margin-bottom: 50px;
+    overflow-y: auto;
+    border-radius: 7px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    font-size: 14px;
+    color: #395B64;
+    height: 500px;
+}
+
+.title{
+    margin: 10px;
+}
+#titlet{
+    overflow:auto;
+    max-width:500px;
+    margin: auto;
+
+}
+
+.plain_text{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.row{
+    text-align: center;
+}
+
+#infobox{
+    background-color: #395B64;
+    font-size: 12px;
+    color: #e9f4ff;
+    padding: 100px;
+    border-radius: 9px;
+    margin: 20px;
+    margin-top: 50px;
+    box-shadow: rgba(27, 27, 27, 0.7) 5px 5px 50px;
+}
+
+#room-name-input{
+    width: 50%;
+    height: 30px;
+    border-radius: 9px;
+    border: 1px solid #5b80b2;
+    padding: 7px;
+    margin-bottom: 10px;
+
+}
+
+#room-name-submit{
+    width: 50%;
+    height: 30px;
+    border-radius: 9px;
+    border: 1px solid #5b80b2;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.item{
+    margin: 10px;
+}
+
+#delbtn{
+
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+    background-color: transparent;
+  color: #ff3636;
+  border:none;
+}
+
+#delbtn:hover {
+  background-color: #ff6767;
+  color: #e9f4ff;
+    transform: scale(1.05);
+}
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+    top: 2px;
+  width: 30px;
+  height: 17px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+    /*top:1px;*/
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #62b75e;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #62b75e;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+
+.message__outer {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 10px;
+    align-items: center;
+    background: rgba(27, 27, 27, 0.11);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.message__outer:hover{
+    background: rgba(27, 27, 27, 0.2);
+    color: #2C3333;
+}
+
+.message__info{
+    font-size: 11px;
+    width: 10%;
+    text-align: center;
+
+}
+
+.message__bubble{
+    /*background: #4ac1f7;*/
+    overflow-wrap: break-word;
+    width: calc(90% - 50px);
+    padding: 10px;
+    text-align: left;
+
+}
+
+/*.message__del{*/
+/*    height: 20px;*/
+/*    width: auto;*/
+/*}*/
+.message__del {
+    font-size: 45px;
+    font-weight: 600;
+    color: #b23838;
+    transition: .4s;
+
+}
+.message__del:hover{
+    color: #e33030;
+    cursor: pointer;
+
+}
+.a__image.smol{
+    height: auto;
+    width: 50%;
+}
+
+.a__image{
+    height: auto;
+    width: 5%;
+}
+
+
+.a__image:hover{
+    cursor: pointer;
+}
+
+#text_message{
+    border: none;
+    border-radius: 9px;
+    padding: 10px;
+    max-width: 500px;
+    max-height: 500px;
+    width: 350px;
+    height: 100px;
+    min-width: 300px;
+    min-height: 65px;
+}
+
+.submit_button{
+    border: none;
+    border-radius: 5px;
+}

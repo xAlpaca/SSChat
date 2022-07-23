@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Page Title</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'SSChat/style.css' %}">
+
+
+
+    </head>
+
+
+    <body>
+        <div id="title" class="row">
+            <h1 id = "titlet">SSChat</h1>
+        </div>
+
+        <div id="infobox" class="row">
+            <h1>Welcome to SSChat by TUHNN</h1>
+            <p class="plain_text">Anonymous chat, no data is collected about users. Tor version of site is available: ***</p>
+            <p class="plain_text">To use chat you ought to enter a room. You may use any character of unicode such as =*^$@│ч~┐│⌂╡ to create room name. </p>
+            <p class="plain_text">Max length of room name is set to 1024 characters</p><br>
+            <input id="room-name-input" type="text" size="100" placeholder="Enter room name..."><br>
+            <input id="room-name-submit" type="button" value="Enter">
+
+
+
+        </div>
+    </body>
+    <script>
+            document.querySelector('#room-name-submit').onclick = function(e) {
+                var roomName = document.querySelector('#room-name-input').value;
+                window.location.pathname = '/' + roomName + '/';
+            } ;
+    </script>
+</html>

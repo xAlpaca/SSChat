@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Page Title</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+        {{ room_name|json_script:"room-name" }}
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'SSChat/style.css' %}">
+
+    </head>
+
+
+    <body>
+        <div id="settings" class="row">
+            <h1 id = "titlet">{{ roomName }}</h1>
+            <p class="plain_text">69 message/s in this room</p>
+
+
+            <fieldset style="border: none">
+                <div class="item">
+                    <label>Chat/Console mode</label>
+
+                    <label class="switch">
+                        <input type="checkbox" name="showmode">
+                        <span class="slider round"></span>
+                    </label>
+
+                </div>
+                <div class="item">
+                    <label id = "aof_label">Messages to load: 40</label>
+
+                    <input id="amount_of_messages" type="range" min="0" max="200" value="40">
+
+                </div>
+
+
+
+                <div class="item">
+                    <input id="delbtn" type="button" value="Delete all messages">
+                </div>
+
+                <div class="item">
+<!--                    <form method="post">-->
+                    <p class="plain_text">Send message:</p>
+<!--                        <input type="" name="text" placeholder="">-->
+                    <textarea id="text_message" type="text" placeholder="Type your message"></textarea><br>
+                    <input id="fileupload" type="file" name="fileupload" /><br>
+                    <input type="button" class="submit_button" id="send-message-button" value="Send">
+
+
+<!--                    </form>-->
+                </div>
+
+            </fieldset>
+        </div>
+
+
+
+
+        <div id="chatbox" class="row">
+            {% for message in messages %}
+                <div class="message">
+                    <div class="message__outer">
+                        <div class="message__info"><p>{{message.date}} {{message.time}}</p></div>
+                        {% load static %}
+                        <div class="message__bubble"><p>{{message.text}}</p> <img seed="{{message.seed}}" class="a__image" src="{% get_media_prefix %}{{ message.field_name}}"> </div>
+
+                        <span seed="{{message.seed}}" onclick="del_msg(this)" class="message__del">&times;</span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+
+    </body>
+    <script>
+        let csrf = '{{ csrf_token }}'
+        images = document.getElementsByClassName("a__image")
+
+        for (let image of images) {
+            image.addEventListener("click", function(){
+                this.classList.toggle("smol");
+            });
+            image.onerror = function () {
+                this.style.display = "none";
+            }
+        }
+
+    </script>
+    <script type="text/javascript" src="{% static 'SSChat/script.js' %}"></script>
+<!--    <script type="text/javascript" src="{% static 'SSChat/websockets.js' %}"></script>-->
+
+
+</html>
