@@ -6,6 +6,7 @@ from .models import message
 from .forms import MessageForm
 from django.views.decorators.csrf import csrf_exempt
 import json
+from ratelimit.decorators import ratelimit
 import os
 
 def index(request):
@@ -29,21 +30,23 @@ def room_get(request, room_name):
     msgs = {}
     for id, msg in enumerate(messages):
         msgs[id] = {0: msg.text, 1: str(msg.time), 2: str(msg.date), 3: str(msg.seed), 4: str(msg.field_name)}
+
+
     return JsonResponse(msgs)
 
 @csrf_exempt
 def room_get_amount(request, room_name, amount):
     messages = message.objects.filter(room=room_name)
-    msgs = {}
+    msgs = {id: {0: msg.text, 1: str(msg.time), 2: str(msg.date), 3: str(msg.seed), 4: str(msg.field_name)} for id, msg in enumerate(messages)}
+
+    for i in range(messages.count()-amount):
+        del(msgs[i])
+
+    _msgs = {id : {0: msgs[index_d][0], 1: msgs[index_d][1], 2: msgs[index_d][2], 3: msgs[index_d][3], 4: msgs[index_d][4]} for id, index_d in enumerate(msgs)}
 
 
-    for id, msg in enumerate(messages):
-        msgs[id] = {0: msg.text, 1: str(msg.time), 2: str(msg.date), 3: str(msg.seed), 4: str(msg.field_name)}
 
-    while len(msgs) > amount:
-        msgs.popitem()
-
-    return JsonResponse(msgs)
+    return JsonResponse(_msgs)
 
 
 
@@ -55,6 +58,7 @@ def room_post(request, room_name):
         _message = message()
         _message.room = room_name
         _message.text = request.POST.get("text")
+        print(_message.text)
         if request.POST.get("time") != "":
             _message.time = request.POST.get("time")
         if request.POST.get("date") != "":
@@ -90,6 +94,16 @@ def room_delete_message(request, room_name):
             print(i.text)
             if i.room == room_name:
                 i.delete()
+    return HttpResponse()
+
+
+@csrf_exempt
+@ratelimit(key='ip', rate='600/h', block=True)
+def room_delete_all_messages(request, room_name):
+    # if request.method == "POST":
+    messages = message.objects.filter(room=room_name)
+    for i in messages:
+        i.delete()
     return HttpResponse()
 
 

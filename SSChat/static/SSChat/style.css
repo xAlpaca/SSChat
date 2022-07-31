@@ -94,6 +94,10 @@ body{
     margin-bottom: 10px;
 }
 
+#send_form{
+    margin-bottom: 10px;
+}
+
 .item{
     margin: 10px;
 }
@@ -117,6 +121,11 @@ body{
   background-color: #ff6767;
   color: #e9f4ff;
     transform: scale(1.05);
+}
+
+.noborder{
+    margin: 0px;
+    padding: 0px;
 }
 
 

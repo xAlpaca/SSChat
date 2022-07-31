@@ -14,6 +14,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
+<!--        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css"/>-->
+<!--        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>-->
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'SSChat/style.css' %}">
 
@@ -25,13 +27,12 @@
             <h1 id = "titlet">{{ roomName }}</h1>
             <p class="plain_text">69 message/s in this room</p>
 
-
             <fieldset style="border: none">
                 <div class="item">
                     <label>Chat/Console mode</label>
 
                     <label class="switch">
-                        <input type="checkbox" name="showmode">
+                        <input type="checkbox" name="showmode" id="modeSwitch">
                         <span class="slider round"></span>
                     </label>
 
@@ -48,8 +49,7 @@
                 <div class="item">
                     <input id="delbtn" type="button" value="Delete all messages">
                 </div>
-
-                <div class="item">
+                <div class = "row" id="send_form">
 <!--                    <form method="post">-->
                     <p class="plain_text">Send message:</p>
 <!--                        <input type="" name="text" placeholder="">-->
@@ -60,6 +60,7 @@
 
 <!--                    </form>-->
                 </div>
+
 
             </fieldset>
         </div>
@@ -79,7 +80,9 @@
                     </div>
                 </div>
             {% endfor %}
+
         </div>
+
 
 
 
@@ -98,8 +101,7 @@
         }
 
     </script>
-    <script type="text/javascript" src="{% static 'SSChat/script.js' %}"></script>
-<!--    <script type="text/javascript" src="{% static 'SSChat/websockets.js' %}"></script>-->
 
+    <script type="text/javascript" src="{% static 'SSChat/script.js' %}"></script>
 
 </html>
